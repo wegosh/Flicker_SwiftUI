@@ -8,12 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		60D62EAC2A22766B00105B31 /* FlickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EAB2A22766B00105B31 /* FlickerApp.swift */; };
-		60D62EAE2A22766B00105B31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EAD2A22766B00105B31 /* ContentView.swift */; };
 		60D62EB02A22766C00105B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D62EAF2A22766C00105B31 /* Assets.xcassets */; };
 		60D62EB32A22766C00105B31 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60D62EB22A22766C00105B31 /* Preview Assets.xcassets */; };
 		60D62EBD2A22766C00105B31 /* FlickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EBC2A22766C00105B31 /* FlickerTests.swift */; };
 		60D62EC72A22766C00105B31 /* FlickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EC62A22766C00105B31 /* FlickerUITests.swift */; };
 		60D62EC92A22766C00105B31 /* FlickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EC82A22766C00105B31 /* FlickerUITestsLaunchTests.swift */; };
+		60D62EDD2A2277AD00105B31 /* NetworkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EDC2A2277AD00105B31 /* NetworkFactory.swift */; };
+		60D62EE02A22789800105B31 /* BaseErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EDF2A22789800105B31 /* BaseErrorResponse.swift */; };
+		60D62EE32A2278D800105B31 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EE22A2278D800105B31 /* BaseURL.swift */; };
+		60D62EE82A227D4400105B31 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EE72A227D4400105B31 /* Configuration.swift */; };
+		60D62EEA2A2280F700105B31 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EE92A2280F700105B31 /* HTTPMethod.swift */; };
+		60D62EEC2A22810500105B31 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EEB2A22810500105B31 /* RequestType.swift */; };
+		60D62EF12A22817A00105B31 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EF02A22817A00105B31 /* RequestFactory.swift */; };
+		60D62EF42A2281B500105B31 /* NetworkAPIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EF32A2281B500105B31 /* NetworkAPIFactory.swift */; };
+		60D62EF62A22822200105B31 /* NetworkRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EF52A22822200105B31 /* NetworkRequestFactory.swift */; };
+		60D62EF82A22823F00105B31 /* CodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EF72A22823F00105B31 /* CodingError.swift */; };
+		60D62EFA2A22825B00105B31 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EF92A22825B00105B31 /* ValidationError.swift */; };
+		60D62EFC2A22827800105B31 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62EFB2A22827800105B31 /* NetworkError.swift */; };
+		60D62F022A22836A00105B31 /* FlickrPhotosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F012A22836A00105B31 /* FlickrPhotosAPI.swift */; };
+		60D62F042A22860200105B31 /* FlickrPhotosService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F032A22860200105B31 /* FlickrPhotosService.swift */; };
+		60D62F072A22867800105B31 /* PhotosResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F062A22867800105B31 /* PhotosResponseWrapper.swift */; };
+		60D62F092A22880400105B31 /* PhotosPaginatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F082A22880400105B31 /* PhotosPaginatedResponse.swift */; };
+		60D62F0B2A22881B00105B31 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F0A2A22881B00105B31 /* PhotoResponse.swift */; };
+		60D62F0F2A22928B00105B31 /* GetSizesWrapperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F0E2A22928B00105B31 /* GetSizesWrapperResponse.swift */; };
+		60D62F132A229A0300105B31 /* SizeDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F122A229A0300105B31 /* SizeDetailsResponse.swift */; };
+		60D62F152A229A0D00105B31 /* SizeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F142A229A0D00105B31 /* SizeResponse.swift */; };
+		60D62F172A229C1800105B31 /* GetImageURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F162A229C1800105B31 /* GetImageURL.swift */; };
+		60D62F1B2A229EE700105B31 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F1A2A229EE700105B31 /* ImageListViewModel.swift */; };
+		60D62F1D2A229EF500105B31 /* ImageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F1C2A229EF500105B31 /* ImageListView.swift */; };
+		60D62F202A22A0A800105B31 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 60D62F1F2A22A0A800105B31 /* SDWebImageSwiftUI */; };
+		60D62F222A22A74B00105B31 /* SortableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F212A22A74B00105B31 /* SortableResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +60,6 @@
 /* Begin PBXFileReference section */
 		60D62EA82A22766B00105B31 /* Flicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D62EAB2A22766B00105B31 /* FlickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerApp.swift; sourceTree = "<group>"; };
-		60D62EAD2A22766B00105B31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		60D62EAF2A22766C00105B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60D62EB22A22766C00105B31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		60D62EB82A22766C00105B31 /* FlickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +67,30 @@
 		60D62EC22A22766C00105B31 /* FlickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D62EC62A22766C00105B31 /* FlickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerUITests.swift; sourceTree = "<group>"; };
 		60D62EC82A22766C00105B31 /* FlickerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		60D62EDC2A2277AD00105B31 /* NetworkFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFactory.swift; sourceTree = "<group>"; };
+		60D62EDF2A22789800105B31 /* BaseErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseErrorResponse.swift; sourceTree = "<group>"; };
+		60D62EE22A2278D800105B31 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		60D62EE72A227D4400105B31 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		60D62EE92A2280F700105B31 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		60D62EEB2A22810500105B31 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		60D62EF02A22817A00105B31 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		60D62EF32A2281B500105B31 /* NetworkAPIFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPIFactory.swift; sourceTree = "<group>"; };
+		60D62EF52A22822200105B31 /* NetworkRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestFactory.swift; sourceTree = "<group>"; };
+		60D62EF72A22823F00105B31 /* CodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingError.swift; sourceTree = "<group>"; };
+		60D62EF92A22825B00105B31 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		60D62EFB2A22827800105B31 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		60D62F012A22836A00105B31 /* FlickrPhotosAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotosAPI.swift; sourceTree = "<group>"; };
+		60D62F032A22860200105B31 /* FlickrPhotosService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotosService.swift; sourceTree = "<group>"; };
+		60D62F062A22867800105B31 /* PhotosResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponseWrapper.swift; sourceTree = "<group>"; };
+		60D62F082A22880400105B31 /* PhotosPaginatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPaginatedResponse.swift; sourceTree = "<group>"; };
+		60D62F0A2A22881B00105B31 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		60D62F0E2A22928B00105B31 /* GetSizesWrapperResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSizesWrapperResponse.swift; sourceTree = "<group>"; };
+		60D62F122A229A0300105B31 /* SizeDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeDetailsResponse.swift; sourceTree = "<group>"; };
+		60D62F142A229A0D00105B31 /* SizeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeResponse.swift; sourceTree = "<group>"; };
+		60D62F162A229C1800105B31 /* GetImageURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageURL.swift; sourceTree = "<group>"; };
+		60D62F1A2A229EE700105B31 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
+		60D62F1C2A229EF500105B31 /* ImageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListView.swift; sourceTree = "<group>"; };
+		60D62F212A22A74B00105B31 /* SortableResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D62F202A22A0A800105B31 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +142,9 @@
 		60D62EAA2A22766B00105B31 /* Flicker */ = {
 			isa = PBXGroup;
 			children = (
-				60D62EAB2A22766B00105B31 /* FlickerApp.swift */,
-				60D62EAD2A22766B00105B31 /* ContentView.swift */,
+				60D62ED52A22774C00105B31 /* App */,
+				60D62ED62A22775100105B31 /* Network */,
+				60D62ED72A22775800105B31 /* MVVM */,
 				60D62EAF2A22766C00105B31 /* Assets.xcassets */,
 				60D62EB12A22766C00105B31 /* Preview Content */,
 			);
@@ -127,6 +176,196 @@
 			path = FlickerUITests;
 			sourceTree = "<group>";
 		};
+		60D62ED52A22774C00105B31 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EE62A227D3600105B31 /* Configuration */,
+				60D62EDA2A22778100105B31 /* Resources */,
+				60D62ED92A22777D00105B31 /* Base */,
+				60D62ED82A22777100105B31 /* Extensions */,
+				60D62EAB2A22766B00105B31 /* FlickerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		60D62ED62A22775100105B31 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F002A22834500105B31 /* Services */,
+				60D62EFF2A22833A00105B31 /* API Config */,
+				60D62EFE2A22833400105B31 /* Requests */,
+				60D62EFD2A22832C00105B31 /* Responses */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		60D62ED72A22775800105B31 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F182A229EBF00105B31 /* Dashboard */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		60D62ED82A22777100105B31 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60D62ED92A22777D00105B31 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EF22A22819500105B31 /* Errors */,
+				60D62EEF2A22816800105B31 /* Protocols */,
+				60D62EDB2A22779400105B31 /* Network */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		60D62EDA2A22778100105B31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		60D62EDB2A22779400105B31 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EE12A2278B600105B31 /* Network Helpers */,
+				60D62EDE2A22788400105B31 /* Error Responses */,
+				60D62EDC2A2277AD00105B31 /* NetworkFactory.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		60D62EDE2A22788400105B31 /* Error Responses */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EDF2A22789800105B31 /* BaseErrorResponse.swift */,
+			);
+			path = "Error Responses";
+			sourceTree = "<group>";
+		};
+		60D62EE12A2278B600105B31 /* Network Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EE22A2278D800105B31 /* BaseURL.swift */,
+				60D62EE92A2280F700105B31 /* HTTPMethod.swift */,
+				60D62EEB2A22810500105B31 /* RequestType.swift */,
+			);
+			path = "Network Helpers";
+			sourceTree = "<group>";
+		};
+		60D62EE62A227D3600105B31 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EE72A227D4400105B31 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		60D62EEF2A22816800105B31 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EF32A2281B500105B31 /* NetworkAPIFactory.swift */,
+				60D62EF02A22817A00105B31 /* RequestFactory.swift */,
+				60D62EF52A22822200105B31 /* NetworkRequestFactory.swift */,
+				60D62F212A22A74B00105B31 /* SortableResponse.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		60D62EF22A22819500105B31 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				60D62EF72A22823F00105B31 /* CodingError.swift */,
+				60D62EF92A22825B00105B31 /* ValidationError.swift */,
+				60D62EFB2A22827800105B31 /* NetworkError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		60D62EFD2A22832C00105B31 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F0C2A22925F00105B31 /* Photos */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		60D62EFE2A22833400105B31 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		60D62EFF2A22833A00105B31 /* API Config */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F012A22836A00105B31 /* FlickrPhotosAPI.swift */,
+			);
+			path = "API Config";
+			sourceTree = "<group>";
+		};
+		60D62F002A22834500105B31 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F032A22860200105B31 /* FlickrPhotosService.swift */,
+				60D62F162A229C1800105B31 /* GetImageURL.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		60D62F052A22865F00105B31 /* RecentPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F062A22867800105B31 /* PhotosResponseWrapper.swift */,
+				60D62F082A22880400105B31 /* PhotosPaginatedResponse.swift */,
+				60D62F0A2A22881B00105B31 /* PhotoResponse.swift */,
+			);
+			path = RecentPhotos;
+			sourceTree = "<group>";
+		};
+		60D62F0C2A22925F00105B31 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F0D2A22926D00105B31 /* GetSizes */,
+				60D62F052A22865F00105B31 /* RecentPhotos */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		60D62F0D2A22926D00105B31 /* GetSizes */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F0E2A22928B00105B31 /* GetSizesWrapperResponse.swift */,
+				60D62F122A229A0300105B31 /* SizeDetailsResponse.swift */,
+				60D62F142A229A0D00105B31 /* SizeResponse.swift */,
+			);
+			path = GetSizes;
+			sourceTree = "<group>";
+		};
+		60D62F182A229EBF00105B31 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F192A229ED300105B31 /* ImageList */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		60D62F192A229ED300105B31 /* ImageList */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F1A2A229EE700105B31 /* ImageListViewModel.swift */,
+				60D62F1C2A229EF500105B31 /* ImageListView.swift */,
+			);
+			path = ImageList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +382,9 @@
 			dependencies = (
 			);
 			name = Flicker;
+			packageProductDependencies = (
+				60D62F1F2A22A0A800105B31 /* SDWebImageSwiftUI */,
+			);
 			productName = Flicker;
 			productReference = 60D62EA82A22766B00105B31 /* Flicker.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +457,9 @@
 				Base,
 			);
 			mainGroup = 60D62E9F2A22766B00105B31;
+			packageReferences = (
+				60D62F1E2A22A0A800105B31 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 60D62EA92A22766B00105B31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +502,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60D62EAE2A22766B00105B31 /* ContentView.swift in Sources */,
+				60D62EF12A22817A00105B31 /* RequestFactory.swift in Sources */,
+				60D62EFC2A22827800105B31 /* NetworkError.swift in Sources */,
+				60D62EE82A227D4400105B31 /* Configuration.swift in Sources */,
+				60D62F022A22836A00105B31 /* FlickrPhotosAPI.swift in Sources */,
+				60D62EDD2A2277AD00105B31 /* NetworkFactory.swift in Sources */,
+				60D62F072A22867800105B31 /* PhotosResponseWrapper.swift in Sources */,
+				60D62F1B2A229EE700105B31 /* ImageListViewModel.swift in Sources */,
+				60D62F172A229C1800105B31 /* GetImageURL.swift in Sources */,
+				60D62EFA2A22825B00105B31 /* ValidationError.swift in Sources */,
+				60D62F222A22A74B00105B31 /* SortableResponse.swift in Sources */,
+				60D62F152A229A0D00105B31 /* SizeResponse.swift in Sources */,
+				60D62F092A22880400105B31 /* PhotosPaginatedResponse.swift in Sources */,
+				60D62EEA2A2280F700105B31 /* HTTPMethod.swift in Sources */,
+				60D62F1D2A229EF500105B31 /* ImageListView.swift in Sources */,
+				60D62F0B2A22881B00105B31 /* PhotoResponse.swift in Sources */,
+				60D62EE32A2278D800105B31 /* BaseURL.swift in Sources */,
+				60D62F042A22860200105B31 /* FlickrPhotosService.swift in Sources */,
+				60D62EF42A2281B500105B31 /* NetworkAPIFactory.swift in Sources */,
+				60D62F132A229A0300105B31 /* SizeDetailsResponse.swift in Sources */,
+				60D62F0F2A22928B00105B31 /* GetSizesWrapperResponse.swift in Sources */,
+				60D62EE02A22789800105B31 /* BaseErrorResponse.swift in Sources */,
 				60D62EAC2A22766B00105B31 /* FlickerApp.swift in Sources */,
+				60D62EF62A22822200105B31 /* NetworkRequestFactory.swift in Sources */,
+				60D62EF82A22823F00105B31 /* CodingError.swift in Sources */,
+				60D62EEC2A22810500105B31 /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,11 +688,13 @@
 				DEVELOPMENT_TEAM = JY8P877P66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flicker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,11 +719,13 @@
 				DEVELOPMENT_TEAM = JY8P877P66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flicker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,6 +855,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		60D62F1E2A22A0A800105B31 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60D62F1F2A22A0A800105B31 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60D62F1E2A22A0A800105B31 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 60D62EA02A22766B00105B31 /* Project object */;
 }
