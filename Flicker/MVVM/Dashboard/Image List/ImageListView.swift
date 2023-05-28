@@ -77,7 +77,7 @@ struct ImageListView: View {
         }
         .refreshable {
             Task {
-                await viewModel.resetPage()
+                await viewModel.resetPageAsync()
                 await viewModel.fetchImages()
             }
         }

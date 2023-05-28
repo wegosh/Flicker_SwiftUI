@@ -42,8 +42,9 @@ enum FlickrPhotosAPI: NetworkAPIFactory {
             return params
         case .search(searchTerm: let term, tagMode: let mode, page: let page):
             var params = [
-                "method": "flickr.photos.getRecent",
-                "tags": term
+                "method": "flickr.photos.search",
+                "tags": term,
+                "tag_mode": mode.rawValue
             ]
             params["per_page"] = String(20)
             params["extras"] = ["tags", "owner_name", "icon_server"].joined(separator: ", ")
@@ -61,8 +62,8 @@ enum FlickrPhotosAPI: NetworkAPIFactory {
 }
 
 enum TagSearchMode: String {
-    case anyMatching
-    case allMatching
+    case anyMatching = "any"
+    case allMatching = "all"
     
     var description: String {
         switch self {

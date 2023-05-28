@@ -19,5 +19,11 @@ class FlickrPhotosService: NetworkFactory {
         let response: PhotoResponseWrapper<GetInfoResponse> = try await makeRequest(api)
         return response.photo
     }
+    
+    func searchTags(_ term: String, mode: TagSearchMode, page: Int?) async throws -> PhotosPaginatedResponse {
+        let api: FlickrPhotosAPI = .search(searchTerm: term, tagMode: mode, page: page)
+        let response: PhotosResponseWrapper<PhotosPaginatedResponse> = try await makeRequest(api)
+        return response.photos
+    }
 }
 

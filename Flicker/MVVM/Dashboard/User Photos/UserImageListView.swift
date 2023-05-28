@@ -50,6 +50,9 @@ struct UserImageListView: View {
                                         .frame(minHeight: 0, maxHeight: .infinity)
                                         .aspectRatio(1, contentMode: .fill)
                                         .clipped()
+                                        .onAppear {
+                                            viewModel.loadMoreIfNeeded(currentItem: item)
+                                        }
                                 }
                                 .onTapGesture {
                                     viewModel.selectImage(item)

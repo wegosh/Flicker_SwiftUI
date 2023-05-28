@@ -10,7 +10,7 @@ import Foundation
 enum FlickrPeopleAPI: NetworkAPIFactory {
     var method: HTTPMethod {
         switch self {
-        case .getPhotos:
+        case .getPhotos, .findByUsername:
             return .get
         }
     }
@@ -32,8 +32,14 @@ enum FlickrPeopleAPI: NetworkAPIFactory {
                 params["page"] = String(page)
             }
             return params
+        case .findByUsername(username: let username):
+            let params = [
+                "username": username
+            ]
+            return params
         }
     }
     
     case getPhotos(userID: String, page: Int?)
+    case findByUsername(username: String)
 }

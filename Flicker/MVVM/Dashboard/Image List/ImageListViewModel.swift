@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class ImageListViewModel: ObservableObject, StatefulViewModel {
     // MARK: - Published Properties
@@ -26,6 +27,12 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     private var imagePage: Int = 1
     private var currentPictureIDs: Set<String> = []
     private var isLoadingMore: Bool = false
+    private var disposables: Set<AnyCancellable> = .init()
+    
+    // MARK: - Initializers
+    init() {
+        observeSearchField()
+    }
     
     // MARK: - Functionality
     @MainActor
@@ -54,7 +61,32 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     }
     
     @MainActor
-    func resetPage() async {
+    func fetchPhotosForTags(_ term: String, mode: TagSearchMode) async {
+        do {
+            guard state != .loading else { return }
+            guard imagesHaveNextPage else { return }
+            await setViewState(.loading)
+            let response = try await service.searchTags(term, mode: mode, page: imagePage)
+            
+            imagesHaveNextPage = response.pages > imagePage
+            
+            if imagesHaveNextPage {
+                imagePage += 1
+            }
+            
+            let newImages = response.photo.filter { !currentPictureIDs.contains($0.id) }
+            currentPictureIDs.formUnion(newImages.map { $0.id })
+            
+            self.pictures.append(contentsOf: sortResponse(newImages))
+            
+            await setViewState(.initial)
+        } catch {
+            await setViewState(.error(message: error.localizedDescription))
+        }
+    }
+    
+    @MainActor
+    func resetPageAsync() async {
         pictures = []
         currentPictureIDs.removeAll()
         imagePage = 1
@@ -89,6 +121,29 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
                                               iconFarm: photoResponse.iconFarm)
             self.selectedOwnerResponse = ownerResponse
             self.showUserPhotos.toggle()
+        }
+    }
+    
+    private func observeSearchField() {
+        $searchForText
+            .receive(on: RunLoop.main)
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink(receiveValue: { value in
+                self.searchFor(value, searchMode: self.pickerMode, tagMode: self.tagMode)
+            })
+            .store(in: &disposables)
+    }
+    
+    private func searchFor(_ term: String, searchMode: PickerMode, tagMode: TagSearchMode) {
+        Task {
+            await resetPageAsync()
+            if term.isEmpty {
+                await fetchImages()
+            } else {
+                if searchMode == .tags {
+                    await fetchPhotosForTags(term, mode: tagMode)
+                }
+            }
         }
     }
                                 
