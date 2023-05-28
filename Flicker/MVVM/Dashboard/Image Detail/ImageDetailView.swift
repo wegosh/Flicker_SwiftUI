@@ -39,7 +39,7 @@ struct ImageDetailView: View {
                         
                         VStack(alignment: .leading, spacing: 20) {
                             HStack(alignment: .top, spacing: 15) {
-                                WebImage(url: details.owner.profileIconURL())
+                                WebImage(url: details.owner.profileIconURL)
                                     .avatar
                                 
                                 VStack(alignment: .leading) {
@@ -48,6 +48,7 @@ struct ImageDetailView: View {
                                     Text(details.owner.username)
                                 }
                             }
+                            .padding(.top, 10)
                             
                             container(iconSysName: "photo", title: "Details", content: {
                                 Group {

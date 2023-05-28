@@ -11,12 +11,26 @@ import SDWebImageSwiftUI
 struct ImageListView: View {
     @StateObject private var viewModel: ImageListViewModel = .init()
     
+    private var navigationTitle: String {
+        let resultsText = "Results for: \(viewModel.searchForText)"
+        return viewModel.searchForText.isEmpty ? "Recent Images" : resultsText
+    }
+    
+    private var promptTitle: String {
+        switch viewModel.pickerMode {
+        case .people:
+            return "Search for people"
+        case .tags:
+            return "Search for tags - \(viewModel.tagMode.description)"
+        }
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 10) {
                 ForEach(viewModel.pictures.uniqueElements()) { item in
                     PictureDetailCard(imageURL: item.imageURL(size: .medium),
-                                      profileURL: item.profileIconURL(),
+                                      profileURL: item.profileIconURL,
                                       username: item.username,
                                       userNSID: item.owner,
                                       tags: item.tags,
@@ -37,7 +51,7 @@ struct ImageListView: View {
             }
             .padding(20)
         }
-        .navigationTitle("Dashboard")
+        .navigationTitle(navigationTitle)
         .navigationDestination(isPresented: $viewModel.showImageDetails, destination: {
             ImageDetailView(imageTitle: viewModel.selectedResponse?.title ?? "",
                             photoID: viewModel.selectedResponse?.id ?? "",
@@ -46,6 +60,16 @@ struct ImageListView: View {
         .navigationDestination(isPresented: $viewModel.showUserPhotos, destination: {
             UserImageListView(owner: $viewModel.selectedOwnerResponse)
         })
+        .searchable(text: $viewModel.searchForText,
+                    placement: .toolbar,
+                    prompt: promptTitle)
+        .toolbar {
+            Button(action: {
+                viewModel.toggleSearchMode.toggle()
+            }, label: {
+                Text("Search mode")
+            })
+        }
         .onAppear {
             Task {
                 await viewModel.fetchImages()
@@ -57,6 +81,45 @@ struct ImageListView: View {
                 await viewModel.fetchImages()
             }
         }
+        .sheet(isPresented: $viewModel.toggleSearchMode, content: {
+            SearchModeView(searchMode: $viewModel.pickerMode, tagMode: $viewModel.tagMode)
+                .presentationDetents([.height(200)])
+        })
+    }
+}
+
+struct SearchModeView: View {
+    @Binding var searchMode: ImageListViewModel.PickerMode
+    @Binding var tagMode: TagSearchMode
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Please select search mode")
+                .font(.system(size: 20, weight: .bold))
+            
+            Picker("Please select search mode", selection: $searchMode, content: {
+                Text("Tags")
+                    .tag(ImageListViewModel.PickerMode.tags)
+                
+                Text("People")
+                    .tag(ImageListViewModel.PickerMode.people)
+            })
+            .pickerStyle(.segmented)
+            
+            if searchMode == .tags {
+                Picker("Select tag picking mode", selection: $tagMode, content: {
+                    Text("Any matching tags")
+                        .tag(TagSearchMode.anyMatching)
+                    
+                    Text("All matching tags")
+                        .tag(TagSearchMode.allMatching)
+                })
+                .pickerStyle(.segmented)
+            }
+            
+            Spacer()
+        }
+        .padding(20)
     }
 }
 

@@ -22,6 +22,7 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
     let iconServer: String
     let tags: String
     let title: String
+    let profileIconURL: URL?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -58,6 +59,7 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
             self.title = try container.decode(String.self, forKey: .title)
             
             self.fetchedAt = .now
+            self.profileIconURL = GetImageURL().profileURL(farm: iconFarm, server: iconServer, ownerNSID: owner)
         } catch {
             print(error)
             throw error
@@ -76,9 +78,5 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
 extension PhotoResponse {
     func imageURL(size: ImageSize) -> URL? {
         return GetImageURL().imageURL(from: self, size: size)
-    }
-    
-    func profileIconURL() -> URL? {
-        return GetImageURL().profileURL(farm: iconFarm, server: iconServer, ownerNSID: owner)
     }
 }

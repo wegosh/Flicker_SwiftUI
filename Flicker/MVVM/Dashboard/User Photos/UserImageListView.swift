@@ -15,37 +15,57 @@ struct UserImageListView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if let owner {
-                HStack(alignment: .top, spacing: 15) {
-                    WebImage(url: owner.profileIconURL())
-                        .avatar
-                    
-                    VStack(alignment: .leading) {
-                        Text(owner.realName)
-                            .font(.system(size: 20, weight: .bold))
-                        Text(owner.username)
+                VStack(alignment: .leading, spacing: 15) {
+                    HStack(alignment: .top, spacing: 15) {
+                        WebImage(url: owner.profileIconURL)
+                            .avatar
+                        
+                        VStack(alignment: .leading) {
+                            Text(owner.realName)
+                                .font(.system(size: 20, weight: .bold))
+                            Text(owner.username)
+                        }
                     }
+                    .padding(10)
+                    
+                    Text("User images:")
+                        .font(.system(size: 24, weight: .medium))
                 }
+                
+                .padding(10)
                 
                 Spacer()
                 
                 ScrollView(showsIndicators: false) {
                     LazyVGrid(columns: [.init(), .init()], content: {
                         ForEach(viewModel.pictures) { item in
-                            WebImage(url: item.imageURL(size: .small240px))
-                                .resizable()
-                                .scaledToFill()
-                                .clipped()
-                                .onAppear {
-                                    viewModel.loadMoreIfNeeded(currentItem: item)
+                            RoundedRectangle(cornerRadius: 0)
+                                .aspectRatio(1.0 , contentMode: .fill)
+                                .foregroundColor(.gray.opacity(0.3))
+                                .overlay {
+                                    WebImage(url: item.imageURL(size: .small240px))
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(minWidth: 0, maxWidth: .infinity)
+                                        .frame(minHeight: 0, maxHeight: .infinity)
+                                        .aspectRatio(1, contentMode: .fill)
+                                        .clipped()
+                                }
+                                .onTapGesture {
+                                    viewModel.selectImage(item)
                                 }
                         }
                     })
                 }
             }
         }
-        .padding(20)
         .navigationTitle(owner?.username ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $viewModel.showImageDetails, destination: {
+            ImageDetailView(imageTitle: viewModel.selectedResponse?.title ?? "",
+                            photoID: viewModel.selectedResponse?.id ?? "",
+                            secret: viewModel.selectedResponse?.secret)
+        })
         .onAppear {
             Task {
                 guard let owner else { return }

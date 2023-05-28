@@ -16,6 +16,10 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     @Published var showUserPhotos: Bool = false
     @Published var selectedResponse: PhotoResponse?
     @Published var selectedOwnerResponse: OwnerResponse?
+    @Published var searchForText: String = ""
+    @Published var toggleSearchMode: Bool = false
+    @Published var pickerMode: PickerMode = .tags
+    @Published var tagMode: TagSearchMode = .anyMatching
     
     // MARK: - Variables
     private let service: FlickrPhotosService = .init()
@@ -99,5 +103,10 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
                 self.state = newState
             }
         }
+    }
+    
+    enum PickerMode: Int, CaseIterable {
+        case tags
+        case people
     }
 }

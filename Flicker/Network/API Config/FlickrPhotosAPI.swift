@@ -10,7 +10,7 @@ import Foundation
 enum FlickrPhotosAPI: NetworkAPIFactory {
     var method: HTTPMethod {
         switch self {
-        case .getRecent, .getInfo:
+        case .getRecent, .getInfo, .search:
             return .get
         }
     }
@@ -40,9 +40,36 @@ enum FlickrPhotosAPI: NetworkAPIFactory {
                 params["secret"] = secret
             }
             return params
+        case .search(searchTerm: let term, tagMode: let mode, page: let page):
+            var params = [
+                "method": "flickr.photos.getRecent",
+                "tags": term
+            ]
+            params["per_page"] = String(20)
+            params["extras"] = ["tags", "owner_name", "icon_server"].joined(separator: ", ")
+            if let page {
+                params["page"] = String(page)
+            }
+            return params
         }
     }
     
     case getRecent(page: Int?)
     case getInfo(photoID: String, secret: String?)
+    case search(searchTerm: String, tagMode: TagSearchMode, page: Int?)
+    
+}
+
+enum TagSearchMode: String {
+    case anyMatching
+    case allMatching
+    
+    var description: String {
+        switch self {
+        case .allMatching:
+            return "All matching"
+        case .anyMatching:
+            return "Any matching"
+        }
+    }
 }

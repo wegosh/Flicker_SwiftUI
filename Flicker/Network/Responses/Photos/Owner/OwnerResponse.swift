@@ -14,6 +14,7 @@ struct OwnerResponse: Decodable {
     let location: String?
     let iconServer: String
     let iconFarm: Int
+    let profileIconURL: URL?
     
     enum CodingKeys: String, CodingKey {
         case nsID = "nsid"
@@ -31,6 +32,7 @@ struct OwnerResponse: Decodable {
         self.location = location
         self.iconServer = iconServer
         self.iconFarm = iconFarm
+        self.profileIconURL = GetImageURL().profileURL(farm: iconFarm, server: iconServer, ownerNSID: nsID)
     }
 
     init(from decoder: Decoder) throws {
@@ -41,14 +43,11 @@ struct OwnerResponse: Decodable {
         self.location = try container.decodeIfPresent(String.self, forKey: .location)
         self.iconServer = try container.decode(String.self, forKey: .iconServer)
         self.iconFarm = try container.decode(Int.self, forKey: .iconFarm)
+        self.profileIconURL = GetImageURL().profileURL(farm: iconFarm, server: iconServer, ownerNSID: nsID)
     }
 }
 
 extension OwnerResponse {
-    func profileIconURL() -> URL? {
-        return GetImageURL().profileURL(farm: iconFarm, server: iconServer, ownerNSID: nsID)
-    }
-    
     static func previewContent() -> Self {
         return .init(nsID: "193220913@N03", username: "Al12XD.LU", realName: "Alonso", location: "Leicester, UK", iconServer: "65535", iconFarm: 66)
     }
