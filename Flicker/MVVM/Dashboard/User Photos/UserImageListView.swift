@@ -28,11 +28,19 @@ struct UserImageListView: View {
                 
                 Spacer()
                 
-                LazyVGrid(columns: [.init(), .init()], content: {
-                    ForEach(viewModel.pictures) { item in
-                        WebImage(url: item.imageURL(size: .small240px))
-                    }
-                })
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: [.init(), .init()], content: {
+                        ForEach(viewModel.pictures) { item in
+                            WebImage(url: item.imageURL(size: .small240px))
+                                .resizable()
+                                .scaledToFill()
+                                .clipped()
+                                .onAppear {
+                                    viewModel.loadMoreIfNeeded(currentItem: item)
+                                }
+                        }
+                    })
+                }
             }
         }
         .padding(20)

@@ -8,5 +8,7 @@
 import Foundation
 
 struct BaseErrorResponse: Decodable {
-    let error: String
+    let stat: String
+    let code: Int
+    let message: String
 }

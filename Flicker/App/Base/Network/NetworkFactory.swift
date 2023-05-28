@@ -28,10 +28,22 @@ class NetworkFactory: NetworkRequestFactory {
         }
         
         if (200...299).contains(newHttpResponse.statusCode){
-            return try JSONDecoder().decode(T.self, from: newData)
+            let decoder = JSONDecoder()
+            
+            if let jsonResponse = try? decoder.decode([String: String].self, from: newData),
+                let stat = jsonResponse["stat"],
+                stat == "fail" {
+                    if let errorMessage = jsonResponse["message"] {
+                        throw NetworkError.message(errorMessage)
+                    } else {
+                        throw NetworkError.unknown
+                    }
+            } else {
+                return try decoder.decode(T.self, from: newData)
+            }
         } else {
             if let response = try? JSONDecoder().decode(BaseErrorResponse.self, from: newData){
-                throw NetworkError.message(response.error)
+                throw NetworkError.message(response.message)
             } else {
                 throw NetworkError.unknown
             }
@@ -53,10 +65,22 @@ class NetworkFactory: NetworkRequestFactory {
         }
         
         if (200...299).contains(httpResponse.statusCode){
-            return
+            let decoder = JSONDecoder()
+            
+            if let jsonResponse = try? decoder.decode([String: String].self, from: newData),
+                let stat = jsonResponse["stat"],
+                stat == "fail" {
+                    if let errorMessage = jsonResponse["message"] {
+                        throw NetworkError.message(errorMessage)
+                    } else {
+                        throw NetworkError.unknown
+                    }
+            } else {
+                return
+            }
         } else {
             if let response = try? JSONDecoder().decode(BaseErrorResponse.self, from: newData){
-                throw NetworkError.message(response.error)
+                throw NetworkError.message(response.message)
             } else {
                 throw NetworkError.unknown
             }

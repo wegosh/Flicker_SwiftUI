@@ -24,7 +24,7 @@ enum FlickrPeopleAPI: NetworkAPIFactory {
         case .getPhotos(userID: let id, page: let page):
             var params = [
                 "user_id": id,
-                "method": "flickr.people.getRecent",
+                "method": "flickr.people.getPhotos",
             ]
             params["per_page"] = String(20)
             params["extras"] = ["tags", "owner_name", "icon_server"].joined(separator: ", ")
