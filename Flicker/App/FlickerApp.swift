@@ -11,7 +11,9 @@ import SwiftUI
 struct FlickerApp: App {
     var body: some Scene {
         WindowGroup {
-            ImageListView()
+            NavigationStack(root: {
+                ImageListView()
+            })
         }
     }
 }

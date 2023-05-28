@@ -14,14 +14,14 @@ class NetworkFactory: NetworkRequestFactory {
     }
     
     func makeRequest<T: Decodable>(_ api: NetworkAPIFactory) async throws -> T {
-        var request: URLRequest = try await api.buildURLRequest()
+        let request: URLRequest = try await api.buildURLRequest()
         let (data, response) = try await makeRequest(with: request)
         
         guard let httpResponse = response as? HTTPURLResponse else{
             throw NetworkError.invalidResponse
         }
-        var newHttpResponse = httpResponse
-        var newData = data
+        let newHttpResponse = httpResponse
+        let newData = data
         
         if newHttpResponse.statusCode == 401 || newHttpResponse.statusCode == 403 {
             // TODO: Throw unauthenticated exception
@@ -39,14 +39,14 @@ class NetworkFactory: NetworkRequestFactory {
     }
     
     func makeRequest(_ api: NetworkAPIFactory) async throws {
-        var request: URLRequest = try await api.buildURLRequest()
+        let request: URLRequest = try await api.buildURLRequest()
         let (data, response) = try await makeRequest(with: request)
         
         guard let httpResponse = response as? HTTPURLResponse else{
             throw NetworkError.invalidResponse
         }
-        var newHttpResponse = httpResponse
-        var newData = data
+        let newHttpResponse = httpResponse
+        let newData = data
         
         if newHttpResponse.statusCode == 401 || newHttpResponse.statusCode == 403 {
             // TODO: Throw unauthenticated exception
