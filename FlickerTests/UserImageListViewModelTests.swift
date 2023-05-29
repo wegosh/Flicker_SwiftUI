@@ -66,9 +66,7 @@ final class UserImageListViewModelTests: XCTestCase {
 
         XCTAssertEqual(viewModel.state, .initial)
         
-        // Modify the sorted photos to contain different values
         let modifiedSortedPhotos: [PhotoResponse] = [
-            // Modify the photo properties to differ from viewModel.pictures
             .init(fetchedAt: .now, id: "2", owner: "owner2", username: "user2", secret: "secret2", server: "server2", farm: 2, isPublic: false, isFriend: true, isFamily: true, iconFarm: 2, iconServer: "iconServer2", tags: "tag2", title: "title2", profileIconURL: nil)
         ]
 
@@ -92,7 +90,6 @@ final class UserImageListViewModelTests: XCTestCase {
             .store(in: &cancellables)
     }
     
-    // Mock implementation of FlickrPeopleService
     class FlickrPeopleServiceMock: FlickrPeopleService {
         var getPhotosResult: Result<PhotosPaginatedResponse, Error>?
         
@@ -110,13 +107,11 @@ final class UserImageListViewModelTests: XCTestCase {
         }
     }
     
-    // Mock error for testing
     enum MockError: Error {
         case someError
         case unexpected
     }
     
-    // Mock data for testing
     struct MockData {
         static let photosResponse: PhotosPaginatedResponse = {
             return .previewContent()
