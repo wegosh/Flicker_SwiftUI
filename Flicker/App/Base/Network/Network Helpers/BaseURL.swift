@@ -14,7 +14,6 @@ enum BaseURL {
     var url: String {
         switch self {
         case .appDefaultURL:
-            // TODO: Add base URL To configuration
             return Configuration.baseURL.absoluteString
         case .customBase(let url):
             return url

@@ -24,7 +24,7 @@ class NetworkFactory: NetworkRequestFactory {
         let newData = data
         
         if newHttpResponse.statusCode == 401 || newHttpResponse.statusCode == 403 {
-            // TODO: Throw unauthenticated exception
+            throw NetworkError.unauthenticated
         }
         
         if (200...299).contains(newHttpResponse.statusCode){
@@ -63,7 +63,7 @@ class NetworkFactory: NetworkRequestFactory {
         let newData = data
         
         if newHttpResponse.statusCode == 401 || newHttpResponse.statusCode == 403 {
-            // TODO: Throw unauthenticated exception
+            throw NetworkError.unauthenticated
         }
         
         if (200...299).contains(httpResponse.statusCode){
