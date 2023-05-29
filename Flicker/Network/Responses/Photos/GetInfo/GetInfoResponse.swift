@@ -19,6 +19,7 @@ struct GetInfoResponse: Decodable {
     let owner: OwnerResponse
     let dates: DatesResponse
     let views: String
+    let description: ContentResponse
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -32,6 +33,7 @@ struct GetInfoResponse: Decodable {
         case owner
         case dates
         case views
+        case description
     }
 
     init(from decoder: Decoder) throws {
@@ -48,6 +50,7 @@ struct GetInfoResponse: Decodable {
             self.owner = try container.decode(OwnerResponse.self, forKey: .owner)
             self.dates = try container.decode(DatesResponse.self, forKey: .dates)
             self.views = try container.decode(String.self, forKey: .views)
+            self.description = try container.decodeIfPresent(ContentResponse.self, forKey: .description) ?? .init("")
         } catch {
             throw error
         }

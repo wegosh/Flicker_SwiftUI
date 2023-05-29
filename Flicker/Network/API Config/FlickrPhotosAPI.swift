@@ -10,7 +10,7 @@ import Foundation
 enum FlickrPhotosAPI: NetworkAPIFactory {
     var method: HTTPMethod {
         switch self {
-        case .getRecent, .getInfo, .search:
+        case .getRecent, .getInfo, .search, .getExif:
             return .get
         }
     }
@@ -52,13 +52,22 @@ enum FlickrPhotosAPI: NetworkAPIFactory {
                 params["page"] = String(page)
             }
             return params
+        case .getExif(photoID: let id, secret: let secret):
+            var params = [
+                "method": "flickr.photos.getExif",
+                "photo_id": id
+            ]
+            if let secret {
+                params["secret"] = secret
+            }
+            return params
         }
     }
     
     case getRecent(page: Int?)
     case getInfo(photoID: String, secret: String?)
     case search(searchTerm: String, tagMode: TagSearchMode, page: Int?)
-    
+    case getExif(photoID: String, secret: String?)
 }
 
 enum TagSearchMode: String {

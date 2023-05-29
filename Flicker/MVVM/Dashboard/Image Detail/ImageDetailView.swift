@@ -50,33 +50,30 @@ struct ImageDetailView: View {
                             }
                             .padding(.top, 10)
                             
-                            container(iconSysName: "photo", title: "Details", content: {
+                            Container(iconSysName: "photo", title: "Details", content: {
                                 Group {
-                                    Text("Title: ")
-                                        .font(.system(size: 18, weight: .bold))
-                                    + Text(imageTitle)
-                                        .font(.system(size: 18))
-                                    
-                                    Text("Description: ")
-                                        .font(.system(size: 18, weight: .bold))
-                                    + Text(imageTitle)
-                                        .font(.system(size: 18))
+                                    containerCell(title: "Title", detail: imageTitle)
+                                    containerCell(title: "Description", detail: details.description.content)
                                 }
                             })
                             
-                            container(iconSysName: "calendar", title: "Dates", content: {
+                            Container(iconSysName: "calendar", title: "Dates", content: {
                                 Group {
-                                    Text("Posted: ")
-                                        .font(.system(size: 18, weight: .bold))
-                                    + Text(dateFormat.string(from: details.dates.posted))
-                                        .font(.system(size: 18))
-                                    
-                                    Text("Taken: ")
-                                        .font(.system(size: 18, weight: .bold))
-                                    + Text(dateFormat.string(from: details.dates.taken))
-                                        .font(.system(size: 18))
+                                    containerCell(title: "Posted", detail: dateFormat.string(from: details.dates.posted))
+                                    containerCell(title: "Taken", detail: dateFormat.string(from: details.dates.taken))
                                 }
                             })
+                            
+                            if let exif = viewModel.exifData,
+                               exif.exif.contains(where: {$0.tag != .unknown}) {
+                                Container(iconSysName: "camera", title: "Image details", content: {
+                                    ForEach(exif.exif, id: \.id, content: { item in
+                                        if item.tag != .unknown {
+                                            containerCell(title: item.label, detail: item.raw.content)
+                                        }
+                                    })
+                                })
+                            }
                         }
                         .padding([.horizontal, .bottom], 10)
                     }
@@ -94,27 +91,14 @@ struct ImageDetailView: View {
 
 extension ImageDetailView {
     @ViewBuilder
-    func container<Content: View>(iconSysName: String, title: String, content: @escaping () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack {
-                Image(systemName: iconSysName)
-                    .font(.system(size: 28))
-                    .foregroundColor(.gray.opacity(0.5))
-                
-                Text(title)
-                    .font(.system(.title3, weight: .medium))
-            }
-            
-            Divider()
-            
-            content()
-                .padding(.leading, 10)
-                .frame(maxWidth: .infinity, alignment: .leading)
+    func containerCell(title: String, detail: String) -> some View {
+        Group {
+            Text(title)
+                .font(.system(size: 18, weight: .bold))
+            + Text(": ")
+            + Text(detail)
+                .font(.system(size: 18))
         }
-        .padding(10)
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(color: .gray.opacity(0.2), radius: 10, y: 5)
     }
 }
 

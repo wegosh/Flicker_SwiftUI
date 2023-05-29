@@ -19,7 +19,6 @@ struct PhotosResponseWrapper<Response: Decodable>: Decodable {
         do {
             self.photos = try container.decode(Response.self, forKey: .photos)
         } catch {
-            print(error)
             throw error
         }
     }
@@ -27,4 +26,17 @@ struct PhotosResponseWrapper<Response: Decodable>: Decodable {
 
 struct PhotoResponseWrapper<Response: Decodable>: Decodable {
     let photo: Response
+    
+    enum CodingKeys: CodingKey {
+        case photo
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            self.photo = try container.decode(Response.self, forKey: .photo)
+        } catch {
+            throw error
+        }
+    }
 }

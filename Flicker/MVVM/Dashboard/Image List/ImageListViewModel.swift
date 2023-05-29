@@ -24,7 +24,7 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     @Published var personResponse: PersonResponse?
     
     // MARK: - Variables
-    private let service: FlickrPhotosService = .init()
+    private let service: FlickrPhotosService
     private let peopleService: FlickrPeopleService = .init()
     private var imagePage: Int = 1
     private var currentPictureIDs: Set<String> = []
@@ -33,7 +33,12 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     
     // MARK: - Initializers
     init() {
+        self.service = .init()
         observeSearchField()
+    }
+    
+    init(_ photoService: FlickrPhotosService) {
+        self.service = photoService
     }
     
     // MARK: - Functionality

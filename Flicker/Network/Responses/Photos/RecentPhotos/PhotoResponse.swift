@@ -24,6 +24,24 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
     let title: String
     let profileIconURL: URL?
     
+    init(fetchedAt: Date, id: String, owner: String, username: String, secret: String, server: String, farm: Int, isPublic: Bool, isFriend: Bool, isFamily: Bool, iconFarm: Int, iconServer: String, tags: String, title: String, profileIconURL: URL?) {
+        self.fetchedAt = fetchedAt
+        self.id = id
+        self.owner = owner
+        self.username = username
+        self.secret = secret
+        self.server = server
+        self.farm = farm
+        self.isPublic = isPublic
+        self.isFriend = isFriend
+        self.isFamily = isFamily
+        self.iconFarm = iconFarm
+        self.iconServer = iconServer
+        self.tags = tags
+        self.title = title
+        self.profileIconURL = profileIconURL
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case owner
@@ -39,7 +57,7 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
         case tags
         case title
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         do {
@@ -51,17 +69,16 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
             self.isPublic = try container.decode(Int.self, forKey: .isPublic) == 1
             self.isFriend = try container.decode(Int.self, forKey: .isFriend) == 1
             self.isFamily = try container.decode(Int.self, forKey: .isFamily) == 1
-            
+
             self.iconServer = try container.decode(String.self, forKey: .iconServer)
             self.iconFarm = try container.decode(Int.self, forKey: .iconFarm)
             self.username = try container.decode(String.self, forKey: .username)
             self.tags = try container.decode(String.self, forKey: .tags)
             self.title = try container.decode(String.self, forKey: .title)
-            
+
             self.fetchedAt = .now
             self.profileIconURL = GetImageURL().profileURL(farm: iconFarm, server: iconServer, ownerNSID: owner)
         } catch {
-            print(error)
             throw error
         }
     }
@@ -78,5 +95,9 @@ struct PhotoResponse: Decodable, Hashable, Identifiable, SortableResponse {
 extension PhotoResponse {
     func imageURL(size: ImageSize) -> URL? {
         return GetImageURL().imageURL(from: self, size: size)
+    }
+    
+    static func previewContent() -> Self {
+        return .init(fetchedAt: .now, id: "1", owner: "owner1", username: "user1", secret: "secret1", server: "server1", farm: 1, isPublic: true, isFriend: false, isFamily: false, iconFarm: 1, iconServer: "iconServer1", tags: "tag1", title: "title1", profileIconURL: nil)
     }
 }

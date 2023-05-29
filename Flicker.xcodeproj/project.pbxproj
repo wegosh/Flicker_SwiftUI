@@ -54,6 +54,11 @@
 		60D62F4D2A24D31200105B31 /* PersonWrapperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F4C2A24D31200105B31 /* PersonWrapperResponse.swift */; };
 		60D62F4F2A24D33B00105B31 /* PersonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F4E2A24D33B00105B31 /* PersonResponse.swift */; };
 		60D62F522A24D57700105B31 /* PersonDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F512A24D57700105B31 /* PersonDetailCard.swift */; };
+		60D62F562A250FE600105B31 /* ImageListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F552A250FE600105B31 /* ImageListViewModelTests.swift */; };
+		60D62F592A25107A00105B31 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 60D62F582A25107A00105B31 /* SDWebImageSwiftUI */; };
+		60D62F5C2A2518BE00105B31 /* ExifResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F5B2A2518BE00105B31 /* ExifResponseWrapper.swift */; };
+		60D62F5E2A251B2700105B31 /* ExifResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F5D2A251B2700105B31 /* ExifResponse.swift */; };
+		60D62F612A25251D00105B31 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F602A25251D00105B31 /* Container.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +128,10 @@
 		60D62F4C2A24D31200105B31 /* PersonWrapperResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWrapperResponse.swift; sourceTree = "<group>"; };
 		60D62F4E2A24D33B00105B31 /* PersonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResponse.swift; sourceTree = "<group>"; };
 		60D62F512A24D57700105B31 /* PersonDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCard.swift; sourceTree = "<group>"; };
+		60D62F552A250FE600105B31 /* ImageListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModelTests.swift; sourceTree = "<group>"; };
+		60D62F5B2A2518BE00105B31 /* ExifResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifResponseWrapper.swift; sourceTree = "<group>"; };
+		60D62F5D2A251B2700105B31 /* ExifResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExifResponse.swift; sourceTree = "<group>"; };
+		60D62F602A25251D00105B31 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D62F592A25107A00105B31 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +168,7 @@
 				60D62EBB2A22766C00105B31 /* FlickerTests */,
 				60D62EC52A22766C00105B31 /* FlickerUITests */,
 				60D62EA92A22766B00105B31 /* Products */,
+				60D62F572A25107A00105B31 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				60D62EBC2A22766C00105B31 /* FlickerTests.swift */,
+				60D62F552A250FE600105B31 /* ImageListViewModelTests.swift */,
 			);
 			path = FlickerTests;
 			sourceTree = "<group>";
@@ -372,6 +384,7 @@
 		60D62F0C2A22925F00105B31 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				60D62F5A2A2518AF00105B31 /* Get Exif */,
 				60D62F352A23C0D900105B31 /* Dates */,
 				60D62F322A23C0B700105B31 /* Owner */,
 				60D62F062A22867800105B31 /* PhotosResponseWrapper.swift */,
@@ -403,6 +416,7 @@
 		60D62F272A23A4BF00105B31 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				60D62F5F2A25251400105B31 /* Containers */,
 				60D62F502A24D56200105B31 /* PersonDetail */,
 				60D62F282A23A4CA00105B31 /* PictureDetail */,
 			);
@@ -486,6 +500,30 @@
 			path = PersonDetail;
 			sourceTree = "<group>";
 		};
+		60D62F572A25107A00105B31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60D62F5A2A2518AF00105B31 /* Get Exif */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F5B2A2518BE00105B31 /* ExifResponseWrapper.swift */,
+				60D62F5D2A251B2700105B31 /* ExifResponse.swift */,
+			);
+			path = "Get Exif";
+			sourceTree = "<group>";
+		};
+		60D62F5F2A25251400105B31 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F602A25251D00105B31 /* Container.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -523,6 +561,9 @@
 				60D62EBA2A22766C00105B31 /* PBXTargetDependency */,
 			);
 			name = FlickerTests;
+			packageProductDependencies = (
+				60D62F582A25107A00105B31 /* SDWebImageSwiftUI */,
+			);
 			productName = FlickerTests;
 			productReference = 60D62EB82A22766C00105B31 /* FlickerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -622,6 +663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D62F5C2A2518BE00105B31 /* ExifResponseWrapper.swift in Sources */,
 				60D62F2C2A23AB5B00105B31 /* WebImage+Extension.swift in Sources */,
 				60D62EF12A22817A00105B31 /* RequestFactory.swift in Sources */,
 				60D62EFC2A22827800105B31 /* NetworkError.swift in Sources */,
@@ -630,6 +672,7 @@
 				60D62F022A22836A00105B31 /* FlickrPhotosAPI.swift in Sources */,
 				60D62EDD2A2277AD00105B31 /* NetworkFactory.swift in Sources */,
 				60D62F072A22867800105B31 /* PhotosResponseWrapper.swift in Sources */,
+				60D62F612A25251D00105B31 /* Container.swift in Sources */,
 				60D62F1B2A229EE700105B31 /* ImageListViewModel.swift in Sources */,
 				60D62F172A229C1800105B31 /* GetImageURL.swift in Sources */,
 				60D62F522A24D57700105B31 /* PersonDetailCard.swift in Sources */,
@@ -661,6 +704,7 @@
 				60D62EF82A22823F00105B31 /* CodingError.swift in Sources */,
 				60D62EEC2A22810500105B31 /* RequestType.swift in Sources */,
 				60D62F392A23C21100105B31 /* ImageDetailView.swift in Sources */,
+				60D62F5E2A251B2700105B31 /* ExifResponse.swift in Sources */,
 				60D62F4D2A24D31200105B31 /* PersonWrapperResponse.swift in Sources */,
 				60D62F462A24BF5A00105B31 /* UserResponse.swift in Sources */,
 			);
@@ -670,6 +714,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D62F562A250FE600105B31 /* ImageListViewModelTests.swift in Sources */,
 				60D62EBD2A22766C00105B31 /* FlickerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1005,6 +1050,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		60D62F1F2A22A0A800105B31 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60D62F1E2A22A0A800105B31 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		60D62F582A25107A00105B31 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 60D62F1E2A22A0A800105B31 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;

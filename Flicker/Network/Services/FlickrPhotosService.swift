@@ -25,5 +25,11 @@ class FlickrPhotosService: NetworkFactory {
         let response: PhotosResponseWrapper<PhotosPaginatedResponse> = try await makeRequest(api)
         return response.photos
     }
+    
+    func getExif(photoID: String, secret: String?) async throws -> ExifResponseWrapper {
+        let api: FlickrPhotosAPI = .getExif(photoID: photoID, secret: secret)
+        let response: PhotoResponseWrapper<ExifResponseWrapper> = try await makeRequest(api)
+        return response.photo
+    }
 }
 
