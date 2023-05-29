@@ -42,6 +42,7 @@ struct PictureDetailCard: View {
                 }
             }
             .padding([.horizontal, .bottom], 10)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.white)
             .onTapGesture {
                 profileTapped()

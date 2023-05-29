@@ -60,7 +60,7 @@ struct ImageListView: View {
         .navigationDestination(isPresented: $viewModel.showUserPhotos, destination: {
             UserImageListView(owner: $viewModel.selectedOwnerResponse)
         })
-        .searchable(text: $viewModel.searchForText,
+        .searchable(text: viewModel.transformSearch(),
                     placement: .toolbar,
                     prompt: promptTitle)
         .toolbar {
@@ -89,13 +89,25 @@ struct ImageListView: View {
 }
 
 struct SearchModeView: View {
+    @Environment(\.dismiss) private var dismiss
     @Binding var searchMode: ImageListViewModel.PickerMode
     @Binding var tagMode: TagSearchMode
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Please select search mode")
-                .font(.system(size: 20, weight: .bold))
+            HStack {
+                Text("Please select search mode")
+                    .font(.system(size: 20, weight: .bold))
+                
+                Spacer()
+                
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Text("Done")
+                })
+            }
+            
             
             Picker("Please select search mode", selection: $searchMode, content: {
                 Text("Tags")
@@ -125,6 +137,8 @@ struct SearchModeView: View {
 
 struct ImageListView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageListView()
+        NavigationStack(root: {
+            ImageListView()
+        })
     }
 }

@@ -24,6 +24,7 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     
     // MARK: - Variables
     private let service: FlickrPhotosService = .init()
+    private let peopleService: FlickrPeopleService = .init()
     private var imagePage: Int = 1
     private var currentPictureIDs: Set<String> = []
     private var isLoadingMore: Bool = false
@@ -67,6 +68,31 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
             guard imagesHaveNextPage else { return }
             await setViewState(.loading)
             let response = try await service.searchTags(term, mode: mode, page: imagePage)
+            
+            imagesHaveNextPage = response.pages > imagePage
+            
+            if imagesHaveNextPage {
+                imagePage += 1
+            }
+            
+            let newImages = response.photo.filter { !currentPictureIDs.contains($0.id) }
+            currentPictureIDs.formUnion(newImages.map { $0.id })
+            
+            self.pictures.append(contentsOf: sortResponse(newImages))
+            
+            await setViewState(.initial)
+        } catch {
+            await setViewState(.error(message: error.localizedDescription))
+        }
+    }
+    
+    @MainActor
+    func fetchPeople(_ username: String) async {
+        do {
+            guard state != .loading else { return }
+            guard imagesHaveNextPage else { return }
+            await setViewState(.loading)
+            let response = try await peopleService
             
             imagesHaveNextPage = response.pages > imagePage
             
@@ -145,6 +171,14 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
                 }
             }
         }
+    }
+    
+    func transformSearch() -> Binding<String> {
+        return .init(get: {
+            return self.searchForText
+        }, set: { value in
+            self.searchForText = value.replacingOccurrences(of: " ", with: ",")
+        })
     }
                                 
     private func sortResponse<R: SortableResponse>(_ response: [R]) -> [R] {

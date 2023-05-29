@@ -13,4 +13,10 @@ class FlickrPeopleService: NetworkFactory {
         let response: PhotosResponseWrapper<PhotosPaginatedResponse> = try await makeRequest(api)
         return response.photos
     }
+    
+    func findByUsername(_ username: String) async throws -> UserResponse {
+        let api: FlickrPeopleAPI = .findByUsername(username: username)
+        let response: UserWrapperResponse<UserResponse> = try await makeRequest(api)
+        return response.user
+    }
 }
