@@ -51,6 +51,9 @@
 		60D62F462A24BF5A00105B31 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F452A24BF5A00105B31 /* UserResponse.swift */; };
 		60D62F492A24BFA000105B31 /* ContentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F482A24BFA000105B31 /* ContentResponse.swift */; };
 		60D62F4B2A24C01C00105B31 /* UserWrapperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F4A2A24C01C00105B31 /* UserWrapperResponse.swift */; };
+		60D62F4D2A24D31200105B31 /* PersonWrapperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F4C2A24D31200105B31 /* PersonWrapperResponse.swift */; };
+		60D62F4F2A24D33B00105B31 /* PersonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F4E2A24D33B00105B31 /* PersonResponse.swift */; };
+		60D62F522A24D57700105B31 /* PersonDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D62F512A24D57700105B31 /* PersonDetailCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +120,9 @@
 		60D62F452A24BF5A00105B31 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		60D62F482A24BFA000105B31 /* ContentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentResponse.swift; sourceTree = "<group>"; };
 		60D62F4A2A24C01C00105B31 /* UserWrapperResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWrapperResponse.swift; sourceTree = "<group>"; };
+		60D62F4C2A24D31200105B31 /* PersonWrapperResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWrapperResponse.swift; sourceTree = "<group>"; };
+		60D62F4E2A24D33B00105B31 /* PersonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResponse.swift; sourceTree = "<group>"; };
+		60D62F512A24D57700105B31 /* PersonDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +403,7 @@
 		60D62F272A23A4BF00105B31 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				60D62F502A24D56200105B31 /* PersonDetail */,
 				60D62F282A23A4CA00105B31 /* PictureDetail */,
 			);
 			path = Reusables;
@@ -457,6 +464,8 @@
 			children = (
 				60D62F452A24BF5A00105B31 /* UserResponse.swift */,
 				60D62F4A2A24C01C00105B31 /* UserWrapperResponse.swift */,
+				60D62F4C2A24D31200105B31 /* PersonWrapperResponse.swift */,
+				60D62F4E2A24D33B00105B31 /* PersonResponse.swift */,
 			);
 			path = People;
 			sourceTree = "<group>";
@@ -467,6 +476,14 @@
 				60D62F482A24BFA000105B31 /* ContentResponse.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		60D62F502A24D56200105B31 /* PersonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				60D62F512A24D57700105B31 /* PersonDetailCard.swift */,
+			);
+			path = PersonDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -615,6 +632,7 @@
 				60D62F072A22867800105B31 /* PhotosResponseWrapper.swift in Sources */,
 				60D62F1B2A229EE700105B31 /* ImageListViewModel.swift in Sources */,
 				60D62F172A229C1800105B31 /* GetImageURL.swift in Sources */,
+				60D62F522A24D57700105B31 /* PersonDetailCard.swift in Sources */,
 				60D62EFA2A22825B00105B31 /* ValidationError.swift in Sources */,
 				60D62F3D2A23D33200105B31 /* FlickrPeopleAPI.swift in Sources */,
 				60D62F222A22A74B00105B31 /* SortableResponse.swift in Sources */,
@@ -626,6 +644,7 @@
 				60D62F1D2A229EF500105B31 /* ImageListView.swift in Sources */,
 				60D62F4B2A24C01C00105B31 /* UserWrapperResponse.swift in Sources */,
 				60D62F0B2A22881B00105B31 /* PhotoResponse.swift in Sources */,
+				60D62F4F2A24D33B00105B31 /* PersonResponse.swift in Sources */,
 				60D62EE32A2278D800105B31 /* BaseURL.swift in Sources */,
 				60D62F042A22860200105B31 /* FlickrPhotosService.swift in Sources */,
 				60D62EF42A2281B500105B31 /* NetworkAPIFactory.swift in Sources */,
@@ -642,6 +661,7 @@
 				60D62EF82A22823F00105B31 /* CodingError.swift in Sources */,
 				60D62EEC2A22810500105B31 /* RequestType.swift in Sources */,
 				60D62F392A23C21100105B31 /* ImageDetailView.swift in Sources */,
+				60D62F4D2A24D31200105B31 /* PersonWrapperResponse.swift in Sources */,
 				60D62F462A24BF5A00105B31 /* UserResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

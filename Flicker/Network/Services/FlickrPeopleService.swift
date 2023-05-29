@@ -19,4 +19,10 @@ class FlickrPeopleService: NetworkFactory {
         let response: UserWrapperResponse<UserResponse> = try await makeRequest(api)
         return response.user
     }
+    
+    func getInfo(for userID: String) async throws -> PersonResponse {
+        let api: FlickrPeopleAPI = .getInfo(userID: userID)
+        let response: PersonWrapperResponse<PersonResponse> = try await makeRequest(api)
+        return response.person
+    }
 }

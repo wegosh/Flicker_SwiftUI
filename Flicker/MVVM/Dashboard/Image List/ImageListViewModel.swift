@@ -21,6 +21,7 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     @Published var toggleSearchMode: Bool = false
     @Published var pickerMode: PickerMode = .tags
     @Published var tagMode: TagSearchMode = .anyMatching
+    @Published var personResponse: PersonResponse?
     
     // MARK: - Variables
     private let service: FlickrPhotosService = .init()
@@ -90,23 +91,14 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     func fetchPeople(_ username: String) async {
         do {
             guard state != .loading else { return }
-            guard imagesHaveNextPage else { return }
             await setViewState(.loading)
-            let response = try await peopleService
-            
-            imagesHaveNextPage = response.pages > imagePage
-            
-            if imagesHaveNextPage {
-                imagePage += 1
-            }
-            
-            let newImages = response.photo.filter { !currentPictureIDs.contains($0.id) }
-            currentPictureIDs.formUnion(newImages.map { $0.id })
-            
-            self.pictures.append(contentsOf: sortResponse(newImages))
+            let response = try await peopleService.findByUsername(username)
+            let userData = try await peopleService.getInfo(for: response.nsID)
+            personResponse = userData
             
             await setViewState(.initial)
         } catch {
+            personResponse = nil
             await setViewState(.error(message: error.localizedDescription))
         }
     }
@@ -137,14 +129,28 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
     }
     
     func selectProfile(from photoResponse: PhotoResponse?) {
+        guard let photoResponse else { return }
+        selectProfile(nsID: photoResponse.owner,
+                      username: photoResponse.username,
+                      realName: photoResponse.username,
+                      location: nil,
+                      iconServer: photoResponse.iconServer,
+                      iconFarm: photoResponse.iconFarm)
+    }
+    
+    func selectProfile(nsID: String,
+                       username: String,
+                       realName: String,
+                       location: String?,
+                       iconServer: String,
+                       iconFarm: Int) {
         DispatchQueue.main.async {
-            guard let photoResponse else { return }
-            let ownerResponse = OwnerResponse(nsID: photoResponse.owner,
-                                              username: photoResponse.username,
-                                              realName: photoResponse.username,
+            let ownerResponse = OwnerResponse(nsID: nsID,
+                                              username: username,
+                                              realName: realName,
                                               location: nil,
-                                              iconServer: photoResponse.iconServer,
-                                              iconFarm: photoResponse.iconFarm)
+                                              iconServer: iconServer,
+                                              iconFarm: iconFarm)
             self.selectedOwnerResponse = ownerResponse
             self.showUserPhotos.toggle()
         }
@@ -168,6 +174,8 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
             } else {
                 if searchMode == .tags {
                     await fetchPhotosForTags(term, mode: tagMode)
+                } else {
+                    await fetchPeople(term)
                 }
             }
         }
@@ -177,7 +185,11 @@ class ImageListViewModel: ObservableObject, StatefulViewModel {
         return .init(get: {
             return self.searchForText
         }, set: { value in
-            self.searchForText = value.replacingOccurrences(of: " ", with: ",")
+            if self.pickerMode == .tags {
+                self.searchForText = value.replacingOccurrences(of: " ", with: ",")
+            } else {
+                self.searchForText = value
+            }
         })
     }
                                 

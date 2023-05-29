@@ -14,9 +14,23 @@ struct ContentResponse: Decodable {
         case content = "_content"
     }
     
+    init(_ content: String) {
+        self.content = content
+    }
+    
+    init(_ content: Int) {
+        self.content = String(content)
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.content = try container.decode(String.self, forKey: .content)
+        if let content = try? container.decode(String.self, forKey: .content) {
+            self.content = content
+        } else if let content = try? container.decode(Int.self, forKey: .content) {
+            self.content = String(content)
+        } else {
+            self.content = ""
+        }
     }
 }

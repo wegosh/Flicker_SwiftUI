@@ -19,12 +19,19 @@ struct PictureDetailCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            WebImage(url: imageURL)
-                .resizable()
-                .scaledToFit()
-                .onTapGesture {
-                    imageTapped()
+            Rectangle()
+                .aspectRatio(1.0 , contentMode: .fill)
+                .foregroundColor(.gray.opacity(0.3))
+                .clipped()
+                .overlay {
+                    WebImage(url: imageURL)
+                        .resizable(capInsets: .init(top: 0, leading: 0, bottom: 0, trailing: 0), resizingMode: .stretch)
+                        .onTapGesture {
+                            imageTapped()
+                        }
                 }
+                .clipped()
+                .scaledToFit()
             
             HStack(alignment: .top, spacing: 15) {
                 WebImage(url: profileURL)
@@ -51,6 +58,7 @@ struct PictureDetailCard: View {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding(2)
+        .clipped()
         .shadow(color: .gray.opacity(0.1), radius: 10, y: 5)
     }
 }

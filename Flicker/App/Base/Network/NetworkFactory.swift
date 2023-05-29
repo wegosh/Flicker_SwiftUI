@@ -30,16 +30,18 @@ class NetworkFactory: NetworkRequestFactory {
         if (200...299).contains(newHttpResponse.statusCode){
             let decoder = JSONDecoder()
             
-            if let jsonResponse = try? decoder.decode([String: String].self, from: newData),
-                let stat = jsonResponse["stat"],
-                stat == "fail" {
-                    if let errorMessage = jsonResponse["message"] {
+            if let response = try? decoder.decode(T.self, from: newData) {
+                return response
+            } else if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let stat = json["stat"] as? String {
+                if stat == "fail" {
+                    if let errorMessage = json["message"] as? String {
                         throw NetworkError.message(errorMessage)
-                    } else {
-                        throw NetworkError.unknown
                     }
+                }
+                throw NetworkError.unknown
             } else {
-                return try decoder.decode(T.self, from: newData)
+                throw NetworkError.unknown
             }
         } else {
             if let response = try? JSONDecoder().decode(BaseErrorResponse.self, from: newData){
@@ -67,16 +69,18 @@ class NetworkFactory: NetworkRequestFactory {
         if (200...299).contains(httpResponse.statusCode){
             let decoder = JSONDecoder()
             
-            if let jsonResponse = try? decoder.decode([String: String].self, from: newData),
-                let stat = jsonResponse["stat"],
-                stat == "fail" {
-                    if let errorMessage = jsonResponse["message"] {
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                      let stat = json["stat"] as? String {
+                if stat == "fail" {
+                    if let errorMessage = json["message"] as? String {
                         throw NetworkError.message(errorMessage)
                     } else {
                         throw NetworkError.unknown
                     }
+                }
+                return 
             } else {
-                return
+                throw NetworkError.unknown
             }
         } else {
             if let response = try? JSONDecoder().decode(BaseErrorResponse.self, from: newData){
