@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OwnerResponse: Decodable {
+struct OwnerResponse: Decodable, Equatable {
     let nsID: String
     let username: String
     let realName: String

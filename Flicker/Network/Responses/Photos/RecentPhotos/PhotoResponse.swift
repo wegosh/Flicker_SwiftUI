@@ -101,3 +101,22 @@ extension PhotoResponse {
         return .init(fetchedAt: .now, id: "1", owner: "owner1", username: "user1", secret: "secret1", server: "server1", farm: 1, isPublic: true, isFriend: false, isFamily: false, iconFarm: 1, iconServer: "iconServer1", tags: "tag1", title: "title1", profileIconURL: nil)
     }
 }
+
+extension PhotoResponse: Equatable {
+    static func == (lhs: PhotoResponse, rhs: PhotoResponse) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.owner == rhs.owner &&
+            lhs.username == rhs.username &&
+            lhs.secret == rhs.secret &&
+            lhs.server == rhs.server &&
+            lhs.farm == rhs.farm &&
+            lhs.isPublic == rhs.isPublic &&
+            lhs.isFriend == rhs.isFriend &&
+            lhs.isFamily == rhs.isFamily &&
+            lhs.iconFarm == rhs.iconFarm &&
+            lhs.iconServer == rhs.iconServer &&
+            lhs.tags == rhs.tags &&
+            lhs.title == rhs.title &&
+            lhs.profileIconURL == rhs.profileIconURL
+    }
+}

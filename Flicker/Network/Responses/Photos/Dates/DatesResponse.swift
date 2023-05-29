@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct DatesResponse: Decodable {
+struct DatesResponse: Decodable, Equatable {
     let posted: Date
     let taken: Date
     
     enum CodingKeys: CodingKey {
         case posted
         case taken
+    }
+    
+    init(posted: Date, taken: Date) {
+        self.posted = posted
+        self.taken = taken
     }
     
     init(from decoder: Decoder) throws {
@@ -36,4 +41,11 @@ struct DatesResponse: Decodable {
             throw DecodingError.dataCorruptedError(forKey: .taken, in: container, debugDescription: "Invalid date format")
         }
     }
+}
+
+extension DatesResponse {
+    static func previewContent() -> DatesResponse {
+        return DatesResponse(posted: Date(), taken: Date().addingTimeInterval(-1000))
+    }
+
 }

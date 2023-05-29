@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetInfoResponse: Decodable {
+struct GetInfoResponse: Decodable, Equatable {
     let id: String
     let secret: String
     let server: String
@@ -35,6 +35,21 @@ struct GetInfoResponse: Decodable {
         case views
         case description
     }
+    
+    init(id: String, secret: String, server: String, farm: Int, safetyLevel: String, rotation: Int, originalSecret: String?, originalFormat: String?, owner: OwnerResponse, dates: DatesResponse, views: String, description: ContentResponse) {
+        self.id = id
+        self.secret = secret
+        self.server = server
+        self.farm = farm
+        self.safetyLevel = safetyLevel
+        self.rotation = rotation
+        self.originalSecret = originalSecret
+        self.originalFormat = originalFormat
+        self.owner = owner
+        self.dates = dates
+        self.views = views
+        self.description = description
+    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -60,5 +75,22 @@ struct GetInfoResponse: Decodable {
 extension GetInfoResponse {
     func imageURL(size: ImageSize) -> URL? {
         return GetImageURL().imageURL(farm: self.farm, server: self.server, id: self.id, secret: self.secret, size: size)
+    }
+    
+    static func previewContent() -> GetInfoResponse {
+        return GetInfoResponse(
+            id: "123456789",
+            secret: "abcd1234",
+            server: "test-server",
+            farm: 1,
+            safetyLevel: "safe",
+            rotation: 0,
+            originalSecret: "efgh5678",
+            originalFormat: "jpg",
+            owner: .previewContent(),
+            dates: .previewContent(),
+            views: "1000",
+            description: ContentResponse("Sample description")
+        )
     }
 }

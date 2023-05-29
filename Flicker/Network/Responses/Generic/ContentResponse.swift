@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ContentResponse: Decodable {
+struct ContentResponse: Decodable, Equatable {
     let content: String
     
     enum CodingKeys: String, CodingKey {

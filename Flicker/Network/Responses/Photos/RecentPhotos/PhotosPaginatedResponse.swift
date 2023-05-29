@@ -22,3 +22,9 @@ struct PhotosPaginatedResponse: Decodable {
         case photo
     }
 }
+
+extension PhotosPaginatedResponse {
+    static func previewContent() -> Self {
+        return .init(page: 1, pages: 2, perPage: 10, total: 20, photo: [.previewContent()])
+    }
+}

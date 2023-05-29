@@ -17,10 +17,19 @@ class UserImageListViewModel: ObservableObject, StatefulViewModel {
     @Published var userID: String?
     
     // MARK: - Variables
-    private let service: FlickrPeopleService = .init()
+    private let service: FlickrPeopleService
     private var imagePage: Int = 1
     private var currentPictureIDs: Set<String> = []
     private var isLoadingMore: Bool = false
+    
+    // MARK: - Initializers
+    init() {
+        self.service = .init()
+    }
+    
+    init(service: FlickrPeopleService) {
+        self.service = service
+    }
     
     // MARK: - Functionality
     @MainActor
